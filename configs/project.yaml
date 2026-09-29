@@ -1,0 +1,55 @@
+project:
+  name: kp_amr_prediction
+  species: "Klebsiella pneumoniae"
+  team_number: 20
+  bioproject: "PRJNA717739"
+  random_seed: 42
+
+labels:
+  resistant: 1
+  susceptible: 0
+  intermediate_policy: "exclude_from_primary_binary_model"
+  unknown_policy: "error"
+
+ast:
+  # M3 rejects unexpected labels; only empty cells/whitespace count as missing.
+  # Dataset suitability only, not biological importance or model performance.
+  eligibility:
+    minimum_usable_binary_count: 70
+    minimum_minority_class_count: 20
+    minimum_minority_class_fraction: 0.20
+
+features:
+  primary_source: "published_AMRFinderPlus_and_ARIBA_determinants"
+  binary_presence_absence: true
+  include_resistance_variants: true
+  include_mechanism_categories: false
+  rerun_amr_callers: false
+
+modeling:
+  required_models:
+    - logistic_regression
+    - random_forest
+    - xgboost
+  validation:
+    preferred: "stratified_cross_validation"
+    n_splits: 5
+    shuffle: true
+  minimum_class_count_for_modeling: 10
+  primary_metric: "roc_auc"
+  secondary_metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1
+
+paths:
+  manifest: "data/dataset_manifest.csv"
+  raw_metadata: "data/raw/metadata"
+  raw_ast: "data/raw/ast"
+  raw_amr: "data/raw/amr"
+  raw_genomes: "data/raw/genomes"
+  interim: "data/interim"
+  processed: "data/processed"
+  outputs: "outputs"
+  models: "models"
