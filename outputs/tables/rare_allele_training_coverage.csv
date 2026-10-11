@@ -1,0 +1,10 @@
+antibiotic,isolate_id,gene,fold,total_carriers,training_carriers,training_resistant,training_susceptible
+IPM,517281,blaNDM-5,4,1,0,0,0
+IPM,517281,blaOXA-181,4,1,0,0,0
+IPM,681054,blaNDM-7,3,1,0,0,0
+MEM,517281,blaNDM-5,4,1,0,0,0
+MEM,517281,blaOXA-181,4,2,1,1,0
+MEM,681054,blaNDM-7,3,1,0,0,0
+ETP,517281,blaNDM-5,4,1,0,0,0
+ETP,517281,blaOXA-181,4,2,1,1,0
+ETP,681054,blaNDM-7,3,1,0,0,0
