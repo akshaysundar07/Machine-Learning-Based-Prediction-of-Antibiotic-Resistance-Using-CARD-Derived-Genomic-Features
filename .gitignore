@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+.DS_Store
+Thumbs.db
+
+# Do not commit potentially large source datasets
+/data/raw/genomes/*
+!/data/raw/genomes/.gitkeep
+
+# Generated models and outputs
+/models/checkpoints/*
+!/models/checkpoints/.gitkeep
+/logs/*
+!/logs/.gitkeep

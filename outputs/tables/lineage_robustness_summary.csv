@@ -1,0 +1,4 @@
+model,grouped_K_locus,grouped_MLST,standard_stratified,drop_grouped_MLST_vs_standard,drop_grouped_K_locus_vs_standard
+logistic_regression,0.9127,0.9231,0.9199,-0.0032,0.0072
+random_forest,0.9245,0.9278,0.9231,-0.0047,-0.0014
+xgboost,0.8817,0.9009,0.8878,-0.0131,0.0061

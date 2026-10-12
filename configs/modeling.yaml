@@ -1,0 +1,18 @@
+# Settings for M2 audit and M6-M8 modeling.
+# Kept separate from project.yaml on purpose: project.yaml's SHA-256 is recorded as M5 provenance,
+# so editing it would invalidate M5 records. Seed and n_splits are still read from project.yaml.
+audit:
+  expected:                     # M2 fails if any of these differ from the data
+    isolates: 100
+    primary_antibiotics: 19
+    audit_only_antibiotics: 1   # CST
+    model_features: 145
+
+modeling:
+  decision_threshold: 0.5       # probability >= threshold -> predicted Resistant
+  class_weight_min_imbalance_ratio: 2.0   # majority/minority in the TRAINING fold
+  lineage_group_columns: ["MLST", "K locus"]
+  hyperparameters:              # fixed, not tuned (docs/DECISIONS.md D008)
+    logistic_regression: {C: 1.0, solver: liblinear, max_iter: 5000}
+    random_forest: {n_estimators: 500}
+    xgboost: {n_estimators: 300, learning_rate: 0.05, max_depth: 3, subsample: 0.8, colsample_bytree: 0.8}
